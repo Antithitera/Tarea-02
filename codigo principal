@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <math.h>
 using namespace std;
 /*
 EQUIPO y DESCRIPCIÓN
@@ -7,6 +7,9 @@ EQUIPO y DESCRIPCIÓN
 
 int fd,fcout,fsim,x,v,alpha,beta,gamma,omega; /las f vienen de "factor"
 const int T, td, tcout, tsim;
+ 
+const double pi=(4*atan(1));
+ 
 
 int main(){
 
