@@ -1,1 +1,26 @@
-//Aquí pondré el boceto
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+/*
+EQUIPO y DESCRIPCIÓN
+*/
+
+int fd,fcout,fsim,x,v,alpha,beta,gamma,omega; /las f vienen de "factor"
+const int T, td, tcout, tsim;
+
+int main(){
+
+/Mensaje de error si los factores o alpha son <=0, si beta<0 tmb.
+
+/Calcular T (hay dos formas en función de gamma)
+
+/Calcular td, tcout y tsim tq. td=T*fd
+
+/Calcular dinámica del oscilador hasta t=tsim
+/A intervalos tcout, mostrar: t,x,v y v^2+alpha*x (enería entre m/2), se escribirá una línea por cada round(tcout/dt) interaciones
+
+/Soluciones extra para los 3 casos particulares
+
+return 0;
+}
