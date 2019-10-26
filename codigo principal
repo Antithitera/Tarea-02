@@ -12,7 +12,15 @@ const double pi=(4*atan(1));
  
 
 int main(){
-
+cin>> fd>>fcout>>fsim>>gamma>>omega>>alpha;
+switch (gamma)
+case "0": T = 2*pi*pow(alpha,−1/2);
+break;
+case "!=0": T= 2*pi/omega;
+break;
+td=fd* T
+tsim=fsim* T
+tcout=fcout* T
 /Mensaje de error si los factores o alpha son <=0, si beta<0 tmb.
 
 /Calcular T (hay dos formas en función de gamma)
