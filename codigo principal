@@ -1,53 +1,32 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
+
 /*
 EQUIPO y DESCRIPCIÓN
 */
 
-int fd,fcout,fsim,x,v,alpha,beta,gamma,omega; /las f vienen de "factor"
-const int T, td, tcout, tsim;
- 
+double fd,fcout,fsim,x,v,alpha,beta,gamma,omega, T, td, tcout, tsim; //las f vienen de "factor"
 const double pi=(4*atan(1));
- 
 
 int main(){
-cout<<"sendos factores";
-cin>> fd>>fcout>>fsim;
-if (fd<0 || fcout<0 || fsim<0)
- cout<<"El valor de cualquier tipo de factor no puede ser negativo"<<endl;
-cout<<"gamma";
-cin>>gamma;
-if (gamma<0)
- cout<<"El valor de gamma no puede ser negativo"<<endl;
-cout<<"alpha";
-cin>>alpha;
-if (alpha<0)
- cout<<"El valor de alpha no puede ser negativo"<<endl;
-cout<<"omega"
-cin>>omega;
-if (omega<0)
- cout<<"El valor de omega no puede ser negativo"<<endl;
-switch (gamma){
- case "0": T = 2*pi*pow(alpha,−1/2);
-break;
- case "!=0": T= 2*pi/omega;
-break;
-}
-td=fd* T
-tsim=fsim* T
-tcout=fcout* T
+cout<<"Introduce los factores fd, fcout y fsim, además de alpha, beta, gamma y omega: ";
+cin>>fd>>fcout>>fsim>>alpha>>beta>>gamma>>omega;
+if (fd<=0 || fcout<=0 || fsim<=0 || alpha<=0 || beta<0) {
+ cout<<"Has introducido algun dato erroneamente";
+ return 0;}
 
-/Mensaje de error si los factores o alpha son <=0, si beta<0 tmb.
+if (gamma==0) T = 2.0*pi*pow(alpha,-0.5); //Calculamos el periodo
+else T= 2*pi/omega;
 
-/Calcular T (hay dos formas en función de gamma)
+td=fd*T; //Calculamos los tiempos en funcion de los factores y el periodo
+tsim=fsim*T;
+tcout=fcout*T;
 
-/Calcular td, tcout y tsim tq. td=T*fd
+//Calcular dinámica del oscilador hasta t=tsim
+//A intervalos tcout, mostrar: t,x,v y v^2+alpha*x (enería entre m/2), se escribirá una línea por cada round(tcout/dt) interaciones
 
-/Calcular dinámica del oscilador hasta t=tsim
-/A intervalos tcout, mostrar: t,x,v y v^2+alpha*x (enería entre m/2), se escribirá una línea por cada round(tcout/dt) interaciones
-
-/Soluciones extra para los 3 casos particulares
+//Soluciones extra para los 3 casos particulares
 
 return 0;
 }
