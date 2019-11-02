@@ -3,6 +3,8 @@
 using namespace std;
 
 /*
+
+EQUIPO V-03
 ANGEL
 CARLOS ASENSIO
 MERCEDES ANDUEZA
@@ -31,7 +33,7 @@ while(t<tsim){//Calculamos la posición y la velocidad por Euler
         for (i;i<tcout;i=i+td){
             x=x+v*td;
             v=v+(-alpha*x-beta*v+gamma*cos(omega*t))*td;
-            E=pow(v,2)+alpha*pow(x,2);//Energia del oscilador parrtido por m/2
+            E=pow(v,2)+alpha*pow(x,2);//Energia del oscilador partido por m/2
             t=t+td;
             }
         i=0;
