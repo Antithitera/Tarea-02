@@ -30,19 +30,41 @@ tcout=fcout*T;
 //Inicializamos:a tiempo inicial 0,posicion y velocidad 0 y las calculamos por Euler
 x=0;
 v=0;
+t=0;
        for (j=0;j<tsimul/tcout;j++){
            for(i=0;i<tcout/td;i++){
            
            x=x+v*td;
-           v=v+(-alpha*x-beta*v+gamma*cos(omega*t);}
-           
-        }
-  E=v*v +alfa*x*x)/(m/2);      //Energia del oscilador
-cout<<t<<x<<v<<E;
+           v=v+(-alpha*x-beta*v+gamma*cos(omega*t);
+           t=t+td;
+         E=v*v +alfa*x*x)/(m/2);      //Energia del oscilador
+       
+            if(beta==0 && gamma==0){ //Caso oscilador sin perdidas
+            double solSin;
+            solSin=-sqrt(pow(x0,2)+(pow(v0,2)/alpha))*sin(sqrt(alpha)*t+atan(((sqrt(alpha)*x0))/v0));
+            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solSin<<endl;
+            }
+            
+             else if(gamma==0 && beta!=0){ //Caso oscilador amortiguado
+            double envolvente, solNum;
+            solNum=x*exp(beta*t/2);
+            envolvente=exp(-beta*t/2)*sqrt(x0+(v0*v0/alpha));
+            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<envolvente<<" "<<solNum<<endl;
+            } 
+            else if(gamma!=0){ //Caso oscilador forzado con resonancia
+            double solEnv;
+            solEnv=(gamma/sqrt(pow(beta,2)*pow(omega,2)+pow(alpha-pow(omega,2),2)))*sin(omega*t+atan((alpha-pow(omega,2))/beta*omega));
+            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solEnv<<endl;
+            }
+            else cout<<t<<" "<<x<<" "<<v<<" "<<E<<endl; //Otros posibles casos
+            }  
+     
+       }                           
+return 0;
+}
 //Calcular dinámica del oscilador hasta t=tsim
 //A intervalos tcout, mostrar: t,x,v y v^2+alpha*x (enería entre m/2), se escribirá una línea por cada round(tcout/dt) iteraciones
 
 //Soluciones extra para los 3 casos particulares
 
-return 0;
-}
+
