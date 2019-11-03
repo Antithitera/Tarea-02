@@ -37,7 +37,7 @@ t=0;
            x=x+v*td;
            v=v+(-alpha*x-beta*v+gamma*cos(omega*t));
            t=t+td;
-         E=v*v +(alfa*x*x)/(m/2);      //Energia del oscilador
+         E=pow(v,2)+alpha*pow(x,2);//Energia del oscilador partido por m/2
        
             if(beta==0 && gamma==0){ //Caso oscilador sin perdidas
             double solSin;
