@@ -10,12 +10,12 @@ MERCEDES ANDUEZA
 EQUIPO y DESCRIPCIÓN
 */
 
-double fd,fcout,fsim,x,v,alpha,beta,gamma,omega, T, td, tcout, tsim, E; //las f vienen de "factor"
+double fd,fcout,fsim,x,x0,v0,v,alpha,beta,gamma,omega, T, td, tcout, tsim, E,i,j,t; //las f vienen de "factor"
 const double pi=(4*atan(1));
 
 int main(){
-cout<<"Introduce los factores fd, fcout y fsim, además de alpha, beta, gamma y omega: ";
-cin>>fd>>fcout>>fsim>>alpha>>beta>>gamma>>omega>>x>>v;
+cout<<"Introduce los factores fd, fcout y fsim, posicion y velocidad inicial,además de alpha, beta, gamma y omega: ";
+cin>>fd>>fcout>>fsim>>x0>>v0>>alpha>>beta>>gamma>>omega;
     if (fd<=0 || fcout<=0 || fsim<=0 || alpha<=0 || beta<0) {
         cout<<"Has introducido algun dato erroneamente";
     return 0;}
@@ -35,9 +35,9 @@ t=0;
            for(i=0;i<tcout/td;i++){
            
            x=x+v*td;
-           v=v+(-alpha*x-beta*v+gamma*cos(omega*t);
+           v=v+(-alpha*x-beta*v+gamma*cos(omega*t));
            t=t+td;
-         E=v*v +alfa*x*x)/(m/2);      //Energia del oscilador
+         E=v*v +(alfa*x*x)/(m/2);      //Energia del oscilador
        
             if(beta==0 && gamma==0){ //Caso oscilador sin perdidas
             double solSin;
