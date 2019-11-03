@@ -14,47 +14,44 @@ double fd,fcout,fsim,x,x0,v0,v,alpha,beta,gamma,omega, T, td, tcout, tsim, E,i,j
 const double pi=(4*atan(1));
 
 int main(){
-cout<<"Introduce los factores fd, fcout y fsim, posicion y velocidad inicial,además de alpha, beta, gamma y omega: ";
+//cout<<"Introduce los factores fd, fcout y fsim, posicion y velocidad inicial,además de alpha, beta, gamma y omega: ";
 cin>>fd>>fcout>>fsim>>x0>>v0>>alpha>>beta>>gamma>>omega;
-    if (fd<=0 || fcout<=0 || fsim<=0 || alpha<=0 || beta<0) {
-        cout<<"Has introducido algun dato erroneamente";
+if (fd<=0 || fcout<=0 || fsim<=0 || alpha<=0 || beta<0) {
+    cout<<"Has introducido algun dato erroneamente";
     return 0;}
 
-     if (gamma==0) T = 2.0*pi*pow(alpha,-0.5); //Calculamos el periodo
-        else T= 2*pi/omega;
-
-td=fd*T; //Calculamos los tiempos en funcion de los factores y el periodo
+if (gamma==0) T = 2.0*pi*pow(alpha,-0.5); //Calculamos el periodo
+    else T= 2*pi/omega;
+        
+//Calculamos los tiempos en funcion de los factores y el periodo
+td=fd*T; 
 tsim=fsim*T;
 tcout=fcout*T;
 
-//Inicializamos:a tiempo inicial 0,posicion y velocidad 0 y las calculamos por Euler
-x=0;
-v=0;
-t=0;
-       for (j=0;j<tsimul/tcout;j++){
-           for(i=0;i<tcout/td;i++){
+for (j=0;j<tsimul/tcout;j++){
+        for(i=0;i<tcout/td;i++){
            
            x=x+v*td;
-           v=v+(-alpha*x-beta*v+gamma*cos(omega*t));
+           v=v+(-alpha*x-beta*v+gamma*cos(omega*t))*td;
            t=t+td;
-         E=pow(v,2)+alpha*pow(x,2);//Energia del oscilador partido por m/2
+           E=pow(v,2)+alpha*pow(x,2);//Energia del oscilador partido por m/2
        
             if(beta==0 && gamma==0){ //Caso oscilador sin perdidas
-            double solSin;
-            solSin=-sqrt(pow(x0,2)+(pow(v0,2)/alpha))*sin(sqrt(alpha)*t+atan(((sqrt(alpha)*x0))/v0));
-            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solSin<<endl;
+                double solSin;
+                solSin=-sqrt(pow(x0,2)+(pow(v0,2)/alpha))*sin(sqrt(alpha)*t+atan(((sqrt(alpha)*x0))/v0));
+                cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solSin<<endl;
             }
             
-             else if(gamma==0 && beta!=0){ //Caso oscilador amortiguado
-            double envolvente, solNum;
-            solNum=x*exp(beta*t/2);
-            envolvente=exp(-beta*t/2)*sqrt(x0+(v0*v0/alpha));
-            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<envolvente<<" "<<solNum<<endl;
+            else if(gamma==0 && beta!=0){ //Caso oscilador amortiguado
+                double envolvente, solNum;
+                solNum=x*exp(beta*t/2);
+                envolvente=exp(-beta*t/2)*sqrt(x0+(v0*v0/alpha));
+                cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<envolvente<<" "<<solNum<<endl;
             } 
             else if(gamma!=0){ //Caso oscilador forzado con resonancia
-            double solEnv;
-            solEnv=(gamma/sqrt(pow(beta,2)*pow(omega,2)+pow(alpha-pow(omega,2),2)))*sin(omega*t+atan((alpha-pow(omega,2))/beta*omega));
-            cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solEnv<<endl;
+                double solEnv;
+                solEnv=(gamma/sqrt(pow(beta,2)*pow(omega,2)+pow(alpha-pow(omega,2),2)))*sin(omega*t+atan((alpha-pow(omega,2))/beta*omega));
+                cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solEnv<<endl;
             }
             else cout<<t<<" "<<x<<" "<<v<<" "<<E<<endl; //Otros posibles casos
             }  
@@ -62,9 +59,3 @@ t=0;
        }                           
 return 0;
 }
-//Calcular dinámica del oscilador hasta t=tsim
-//A intervalos tcout, mostrar: t,x,v y v^2+alpha*x (enería entre m/2), se escribirá una línea por cada round(tcout/dt) iteraciones
-
-//Soluciones extra para los 3 casos particulares
-
-
