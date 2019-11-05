@@ -8,7 +8,17 @@ EQUIPO V-03
 ANGEL
 CARLOS ASENSIO
 MERCEDES ANDUEZA
-DESCRIPCIÓN
+DESCRIPCIÃ“N
+Calcula  
+    Entradas:  
+              (teclado)
+    Salidas:  Si  
+              Si  
+              siguientes valores:
+                 
+              (pantalla)
+     
+*/
 */
 
 double fd,fcout,fsim,x,x0,v,v0,alpha,beta,gamma,omega, T, td, tcout, tsim, E,t,i; //las f vienen de "factor"
@@ -29,7 +39,7 @@ tsim=fsim*T;
 tcout=fcout*T;
 i=tcout+1;
 
-while(t<tsim){//Calculamos la posición y la velocidad por Euler
+while(t<tsim){//Calculamos la posiciÃ³n y la velocidad por Euler
         for ( ;i<tcout;i=i+td){
             x=x+v*td;
             v=v+(-alpha*x-beta*v+gamma*cos(omega*t))*td;
@@ -53,8 +63,7 @@ while(t<tsim){//Calculamos la posición y la velocidad por Euler
             double solEnv;
             solEnv=(gamma/sqrt(pow(beta,2)*pow(omega,2)+pow(alpha-pow(omega,2),2)))*sin(omega*t+atan((alpha-pow(omega,2))/beta*omega));
             cout<<t<<" "<<x<<" "<<v<<" "<<E<<" "<<solEnv<<endl;
-        }
-        else cout<<t<<" "<<x<<" "<<v<<" "<<E<<endl; //Otros posibles casos
+        } 
 }
 return 0;
 }
